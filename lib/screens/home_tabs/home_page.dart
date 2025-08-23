@@ -183,45 +183,49 @@ class HomePage extends StatelessWidget {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       AspectRatio(
-                        aspectRatio: 4 / 5,
+                        aspectRatio: 5 / 6,
                         child: Image.network(
                           RecommendedProducts.dummy[index].thumbnail,
                           fit: BoxFit.cover,
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              spacing: 8.0,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    RecommendedProducts.dummy[index].title,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .titleSmall!
-                                        .copyWith(color: Colors.black54),
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                spacing: 8.0,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      RecommendedProducts.dummy[index].title,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleSmall!
+                                          .copyWith(color: Colors.black54),
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
                                   ),
-                                ),
-                                Text(
-                                  '${RecommendedProducts.dummy[index].rating}⭐',
-                                  style: Theme.of(context).textTheme.titleSmall,
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 2),
-                            Text(
-                              'IDR ${RecommendedProducts.dummy[index].price}',
-                              style: Theme.of(context).textTheme.titleMedium!
-                                  .copyWith(fontWeight: FontWeight.w500),
-                            ),
-                          ],
+                                  Text(
+                                    '${RecommendedProducts.dummy[index].rating}⭐',
+                                    style: Theme.of(
+                                      context,
+                                    ).textTheme.titleSmall,
+                                  ),
+                                ],
+                              ),
+                              const Spacer(),
+                              Text(
+                                'IDR ${RecommendedProducts.dummy[index].price}',
+                                style: Theme.of(context).textTheme.titleMedium!
+                                    .copyWith(fontWeight: FontWeight.w500),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],
