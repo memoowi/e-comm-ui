@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pertama/core/config.dart';
+import 'package:flutter_pertama/data/categories.dart';
 import 'package:flutter_pertama/data/recommended_products.dart';
 import 'package:flutter_pertama/models/login_model.dart';
+import 'package:flutter_pertama/screens/category_screen.dart';
+import 'package:flutter_pertama/widgets/product_card.dart';
 
 class HomePage extends StatelessWidget {
   final LoginModel loginModel;
@@ -13,15 +16,6 @@ class HomePage extends StatelessWidget {
     'assets/carousels/2.png',
     'assets/carousels/4.png',
     'assets/carousels/1.png',
-  ];
-
-  final List<Map<String, dynamic>> categories = [
-    {'title': 'Fashion', 'icon': 'assets/icons/tshirt.png'},
-    {'title': 'Groceries', 'icon': 'assets/icons/grocery.png'},
-    {'title': 'Electronics', 'icon': 'assets/icons/responsive.png'},
-    {'title': 'Home Appliances', 'icon': 'assets/icons/electronics.png'},
-    {'title': 'Beauty', 'icon': 'assets/icons/skincare.png'},
-    {'title': 'Sports & Outdoor', 'icon': 'assets/icons/sports.png'},
   ];
 
   @override
@@ -114,7 +108,13 @@ class HomePage extends StatelessWidget {
             ),
             itemBuilder: (context, index) {
               return InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    CategoryScreen.routeName,
+                    arguments: categories[index],
+                  );
+                },
                 borderRadius: BorderRadius.circular(16),
                 child: Container(
                   padding: const EdgeInsets.all(16),
@@ -126,9 +126,9 @@ class HomePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     spacing: 10,
                     children: [
-                      Image.asset(categories[index]['icon'], height: 36),
+                      Image.asset(categories[index].icon!, height: 36),
                       Text(
-                        categories[index]['title'],
+                        categories[index].title!,
                         textAlign: TextAlign.center,
                         style: Theme.of(context).textTheme.labelLarge!.copyWith(
                           fontWeight: FontWeight.w500,
@@ -175,62 +175,12 @@ class HomePage extends StatelessWidget {
               childAspectRatio: 3 / 5,
             ),
             itemBuilder: (context, index) {
-              return Card(
-                clipBehavior: Clip.antiAlias,
-                child: InkWell(
-                  onTap: () {},
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      AspectRatio(
-                        aspectRatio: 5 / 6,
-                        child: Image.network(
-                          RecommendedProducts.dummy[index].thumbnail,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                spacing: 8.0,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      RecommendedProducts.dummy[index].title,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .titleSmall!
-                                          .copyWith(color: Colors.black54),
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ),
-                                  Text(
-                                    '${RecommendedProducts.dummy[index].rating}⭐',
-                                    style: Theme.of(
-                                      context,
-                                    ).textTheme.titleSmall,
-                                  ),
-                                ],
-                              ),
-                              const Spacer(),
-                              Text(
-                                'IDR ${RecommendedProducts.dummy[index].price}',
-                                style: Theme.of(context).textTheme.titleMedium!
-                                    .copyWith(fontWeight: FontWeight.w500),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+              return ProductCard(
+                onTap: () {},
+                thumbnail: RecommendedProducts.dummy[index].thumbnail,
+                title: RecommendedProducts.dummy[index].title,
+                rating: RecommendedProducts.dummy[index].rating,
+                price: RecommendedProducts.dummy[index].price,
               );
             },
           ),

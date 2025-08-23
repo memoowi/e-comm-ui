@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_pertama/models/category_model.dart';
 import 'package:flutter_pertama/models/login_model.dart';
+import 'package:flutter_pertama/screens/category_screen.dart';
 import 'package:flutter_pertama/screens/main_screen.dart';
 import 'package:flutter_pertama/screens/login_screen.dart';
 import 'package:flutter_pertama/screens/register_screen.dart';
@@ -55,6 +57,11 @@ class MyApp extends StatelessWidget {
         },
         RegisterScreen.routeName: (context) => RegisterScreen(),
         LoginScreen.routeName: (context) => LoginScreen(),
+        CategoryScreen.routeName: (context) {
+          final CategoryModel args =
+              ModalRoute.of(context)!.settings.arguments as CategoryModel;
+          return CategoryScreen(category: args);
+        },
       },
       debugShowCheckedModeBanner: false,
     );
