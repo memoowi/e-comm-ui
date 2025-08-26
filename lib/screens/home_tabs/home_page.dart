@@ -41,7 +41,48 @@ class HomePage extends StatelessWidget {
           context,
         ).textTheme.titleLarge!.copyWith(fontWeight: FontWeight.bold),
         actions: [
-          IconButton(icon: Icon(CupertinoIcons.cart), onPressed: () {}),
+          IconButton(
+            icon: Icon(CupertinoIcons.cart),
+            onPressed: () {
+              // toast
+              ScaffoldMessenger.of(
+                context,
+              ).showSnackBar(SnackBar(content: Text('Cart')));
+
+              // showDatePicker(
+              //   context: context,
+              //   firstDate: DateTime.now(),
+              //   lastDate: DateTime.now(),
+              //   initialDate: DateTime.now(),
+              // );
+              // bottom sheets
+              // showModalBottomSheet(
+              //   context: context,
+              //   isScrollControlled: true,
+              //   isDismissible: true,
+              //   enableDrag: true,
+              //   builder: (context) {
+              //     return Column(
+              //       mainAxisSize: MainAxisSize.min,
+              //       children: [
+              //         ListTile(
+              //           title: Text('Item 1'),
+              //           leading: Icon(CupertinoIcons.cart),
+              //         ),
+              //         ListTile(
+              //           title: Text('Item 2'),
+              //           leading: Icon(CupertinoIcons.cart),
+              //         ),
+              //         ListTile(
+              //           title: Text('Item 3'),
+              //           leading: Icon(CupertinoIcons.cart),
+              //         ),
+              //       ],
+              //     );
+              //   },
+              // );
+            },
+          ),
           IconButton(icon: Icon(CupertinoIcons.chat_bubble), onPressed: () {}),
         ],
       ),

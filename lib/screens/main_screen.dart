@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_pertama/core/config.dart';
 import 'package:flutter_pertama/models/login_model.dart';
 import 'package:flutter_pertama/screens/home_tabs/cart_page.dart';
 import 'package:flutter_pertama/screens/home_tabs/home_page.dart';
