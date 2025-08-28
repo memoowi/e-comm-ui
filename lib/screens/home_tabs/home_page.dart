@@ -8,8 +8,8 @@ import 'package:flutter_pertama/screens/category_screen.dart';
 import 'package:flutter_pertama/widgets/product_card.dart';
 
 class HomePage extends StatelessWidget {
-  final LoginModel loginModel;
-  HomePage({super.key, required this.loginModel});
+  final LoginModel? loginModel;
+  HomePage({super.key, this.loginModel});
 
   final List<String> carouselItems = [
     'assets/carousels/3.png',
@@ -32,7 +32,7 @@ class HomePage extends StatelessWidget {
               ).textTheme.titleLarge!.copyWith(fontWeight: FontWeight.bold),
             ),
             Text(
-              'Welcome, ${loginModel.email}',
+              'Welcome, ${loginModel?.email ?? 'Guest'}',
               style: Theme.of(context).textTheme.labelLarge,
             ),
           ],

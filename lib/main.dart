@@ -48,11 +48,11 @@ class MyApp extends StatelessWidget {
         ),
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
       ),
-      initialRoute: "/login",
+      initialRoute: MainScreen.routeName,
       routes: {
         MainScreen.routeName: (context) {
-          final LoginModel args =
-              ModalRoute.of(context)!.settings.arguments as LoginModel;
+          final LoginModel? args =
+              ModalRoute.of(context)!.settings.arguments as LoginModel?;
           return MainScreen(loginModel: args);
         },
         RegisterScreen.routeName: (context) => RegisterScreen(),

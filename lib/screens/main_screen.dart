@@ -7,8 +7,8 @@ import 'package:flutter_pertama/screens/home_tabs/profile_page.dart';
 import 'package:flutter_pertama/screens/home_tabs/search_page.dart';
 
 class MainScreen extends StatefulWidget {
-  final LoginModel loginModel;
-  const MainScreen({super.key, required this.loginModel});
+  final LoginModel? loginModel;
+  const MainScreen({super.key, this.loginModel});
 
   static const routeName = '/home';
 
@@ -34,7 +34,7 @@ class _MainScreenState extends State<MainScreen> {
           HomePage(loginModel: widget.loginModel),
           SearchPage(),
           CartPage(),
-          ProfilePage(),
+          ProfilePage(loginModel: widget.loginModel),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

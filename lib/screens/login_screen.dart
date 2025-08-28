@@ -48,9 +48,10 @@ class _LoginScreenState extends State<LoginScreen> {
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
       // Navigate to HomeScreen
-      Navigator.pushReplacementNamed(
+      Navigator.pushNamedAndRemoveUntil(
         context,
         MainScreen.routeName,
+        (route) => false,
         arguments: LoginModel(
           email: _emailController.text,
           password: _passwordController.text,
